@@ -18,6 +18,9 @@ pp ENV
 puts '# Runtime environment'
 pp runtime_environment
 
+puts '# /app/README.md'
+puts File.read('/app/README.md')
+
 if runtime_environment['DEBUG_BUILDPACK_CONTENTS']
   puts '# BUILD_DIR contents'
   pp Dir.entries BUILD_DIR
