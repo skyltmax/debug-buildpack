@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'pp'
+require 'fileutils'
+
+BUILD_DIR, CACHE_DIR, ENV_DIR = ARGV
+
+def runtime_environment
+  entries = Dir.entries(ENV_DIR) - ['.', '..']
+  entries.map { |name| [name, File.read(File.join(ENV_DIR, name))] }.to_h
+end
+
+puts '# BUILD_DIR', BUILD_DIR
+puts '# CACHE_DIR', CACHE_DIR
+puts '# ENV_DIR', ENV_DIR
+
+puts '# Build environment'
+pp ENV
+puts '# Runtime environment'
+pp runtime_environment
+
+exit 0
