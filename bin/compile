@@ -18,15 +18,17 @@ pp ENV
 puts '# Runtime environment'
 pp runtime_environment
 
-puts '# BUILD_DIR contents'
-pp Dir.entries BUILD_DIR
-puts '# / contents'
-pp Dir.entries '/'
-puts '# /app contents'
-pp Dir.entries '/app'
-puts '# /bin contents'
-pp Dir.entries '/bin'
-puts '# /usr/bin contents'
-pp Dir.entries '/usr/bin'
+if runtime_environment['DEBUG_BUILDPACK_CONTENTS']
+  puts '# BUILD_DIR contents'
+  pp Dir.entries BUILD_DIR
+  puts '# / contents'
+  pp Dir.entries '/'
+  puts '# /app contents'
+  pp Dir.entries '/app'
+  puts '# /bin contents'
+  pp Dir.entries '/bin'
+  puts '# /usr/bin contents'
+  pp Dir.entries '/usr/bin'
+end
 
 exit 0
