@@ -9,16 +9,26 @@ def runtime_environment
   entries.map { |name| [name, File.read(File.join(ENV_DIR, name))] }.to_h
 end
 
+puts '# uname -a'
+puts `uname -a`
+puts '# /proc/cpuinfo'
+puts File.read '/proc/cpuinfo'
+puts '# free -h'
+puts `free -h`
+
 puts '# BUILD_DIR', BUILD_DIR
 puts '# CACHE_DIR', CACHE_DIR
 puts '# ENV_DIR', ENV_DIR
 
 puts '# Build environment'
 pp ENV
-puts '# Runtime environment'
-pp runtime_environment
 
-if runtime_environment['DEBUG_BUILDPACK_CONTENTS']
+if runtime_environment['DEBUG_SHOW_CONFIG']
+  puts '# Runtime environment'
+  pp runtime_environment
+end
+
+if runtime_environment['DEBUG_SHOW_FILES']
   puts '# BUILD_DIR contents'
   pp Dir.entries BUILD_DIR
   puts '# / contents'
