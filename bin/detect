@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 BUILD_DIR = ARGV[0]
-
+puts "Debug"
 exit 0
